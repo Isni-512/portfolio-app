@@ -1,3 +1,8 @@
+# portfolio-app
+Portfolio App est un site web personnel présentant le profil, les compétences et les projets d’un développeur. Il met en valeur le parcours, les réalisations et les technologies maîtrisées à travers une interface moderne, claire et responsive.
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
