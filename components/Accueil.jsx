@@ -14,9 +14,7 @@ export default function Accueil() {
   const mainText = isLight ? "text-black" : "text-white";
   const cyanText = isLight ? "text-cyan-600" : "text-cyan-300";
   const descText = isLight ? "text-gray-700" : "text-gray-300";
-  const buttonClasses = isLight
-    ? "bg-gradient-to-r from-cyan-400 to-pink-500 text-white"
-    : "bg-cyan-400 text-black hover:bg-cyan-300";
+
 
   return (
     <section
@@ -54,7 +52,7 @@ export default function Accueil() {
             y: -3,
             boxShadow: "0px 5px 15px rgba(0, 188, 212, 0.4)",
           }}
-          className={`inline-block mt-8 px-8 py-3 rounded-full font-medium transition-all ${buttonClasses}`}
+          className="inline-block mt-8 px-8 py-3 rounded-full font-medium transition-all bg-gradient-to-r from-cyan-400 to-pink-500 text-white"
         >
           Voir mes projets
         </motion.a>
