@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Climate Canada Dashboard",
+    "desc": "Application de visualisation climatique",
+    "img": "/img/climatecanada.jpg",
+    "link": "https://jonathanbysanon.github.io/ClimateCanada/pages/dashboard.html"
+  },
+  {
+    "title": "Event App",
+    "desc": "Application web de gestion d'événements",
+    "img": "/img/eventapp.jpg",
+    "link": "https://event-app-2-sand.vercel.app/"
+  },
+  {
+    "title": "Game Project",
+    "desc": "Petit jeu web interactif en JavaScript",
+    "img": "/img/gameproject.jpg",
+    "link": "https://isni-512.github.io/Game_Project/"
+  },
+  {
+    "title": "Documentation Technique",
+    "desc": "Page de documentation technique",
+    "img": "/img/documentation.jpg",
+    "link": "https://technical-documentation-page.freecodecamp.rocks/"
+  },
+  {
+    "title": "Page Tribute",
+    "desc": "Hommage à une personnalité",
+    "img": "/img/tribute.jpg",
+    "link": "https://tribute-page.freecodecamp.rocks/"
+  },
+  {
+    "title": "Survey Form",
+    "desc": "Formulaire d’enquête interactif",
+    "img": "/img/survey.jpg",
+    "link": "https://survey-form.freecodecamp.rocks/"
+  }
+]
