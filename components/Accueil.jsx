@@ -11,7 +11,7 @@ export default function Accueil() {
           transition={{ duration: 1 }}
           className="text-5xl font-bold"
         >
-          Bonjour, je suis <span className="text-cyan-400">Claude</span>
+          Bonjour, je suis <span className="text-cyan-400">Israel-Claude</span>
         </motion.h1>
 
         <motion.p
