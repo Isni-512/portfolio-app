@@ -1,0 +1,10 @@
+{
+  "title": "À propos",
+  "hello": "Je m'appelle",
+  "name": "Israel-Claude Nsimbi",
+  "devDesc": "développeur en formation passionné par le développement logiciel et les technologies réseau. J’aime concevoir des applications et des sites modernes en combinant créativité, rigueur et innovation.",
+  "skillsIntro": "Curieux et motivé, je cherche constamment à apprendre et à perfectionner mes compétences en :",
+   "skills": "C#, .NET, Java, React.js",
+  "interests": "Je m'intéresse particulièrement aux bonnes pratiques de développement et à l’optimisation des performances des applications.",
+  "teamwork": "Collaboratif et attentif aux détails, je prends plaisir à travailler en équipe pour créer des solutions efficaces et durables. Mon objectif est de contribuer à des projets stimulants tout en continuant à grandir en tant que développeur."
+}

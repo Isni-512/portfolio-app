@@ -1,30 +1,43 @@
 "use client";
-import { createContext, useState, useContext, useEffect } from "react";
+
+import { createContext, useContext, useState, useEffect } from "react";
 
 // Création du context
 const MyContext = createContext();
 
-//Creation le hook personnalisé pour utiliser le context
-export const useMyContext = () => {
-    return useContext(MyContext);
-};
+// Hook personnalisé
+export const useMyContext = () => useContext(MyContext);
 
-// Création du provider
+// Provider
 export default function MyContextProvider({ children }) {
-    const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("light");
+  const [language, setLanguage] = useState("fr");
 
-    useEffect(() => {
-        setTheme(localStorage.getItem("theme2") || "light");
-    });
+  // Lecture du thème et de la langue depuis localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme2");
+    const savedLang = localStorage.getItem("lang") || "fr";
 
-    const toggleTheme = () => {
-        setTheme(theme === "light" ? "dark" : "light");
-        localStorage.setItem("theme2", theme === "light" ? "dark" : "light");
-    };
+    if (savedTheme) setTheme(savedTheme);
+    setLanguage(savedLang);
+  }, []);
 
-    return (
-        <MyContext.Provider value={{ theme, toggleTheme }}>
-            {children}
-        </MyContext.Provider>
-    );
+  // Toggle thème
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme2", newTheme);
+  };
+
+  // Changer langue
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
+    localStorage.setItem("lang", lang);
+  };
+
+  return (
+    <MyContext.Provider value={{ theme, toggleTheme, language, changeLanguage }}>
+      {children}
+    </MyContext.Provider>
+  );
 }

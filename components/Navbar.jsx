@@ -1,56 +1,60 @@
 "use client";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { useMyContext } from "@/provider/MyContextProvider";
+import { FiMenu, FiX } from "react-icons/fi";
+import { useState, useEffect } from "react";
 
 export default function Navbar({ isOpen, setIsOpen }) {
-  const { theme } = useMyContext();
+  const { theme, language } = useMyContext();
+  const isLight = theme === "light";
 
-  const menuClasses = theme === "light"
-    ? "text-black"
-    : "text-white";
+  const [navData, setNavData] = useState(null);
 
-  const mobileMenuClasses = theme === "light"
-    ? "bg-white/90 text-black border-gray-300"
-    : "bg-black/90 text-white border-white/20";
+  useEffect(() => {
+    let isMounted = true;
+
+    fetch(`/locales/${language}/Navbar.json`)
+      .then(res => res.json())
+      .then(data => { if (isMounted) setNavData(data); })
+      .catch(err => console.error("Erreur chargement Navbar :", err));
+
+    return () => { isMounted = false; };
+  }, [language]);
+
+  if (!navData) return null;
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const linkStyle = isLight ? "text-black hover:text-cyan-500" : "text-white hover:text-cyan-300";
+  const mobileStyle = isLight ? "bg-white/90 text-black" : "bg-black/90 text-white";
 
   return (
     <>
-      {/* Menu desktop */}
-      <nav className="hidden md:block">
-        <ul className={`flex gap-8 text-lg ${menuClasses}`}>
-          <li><Link href="#about" className="hover:text-cyan-400 transition">À propos</Link></li>
-          <li><Link href="#projects" className="hover:text-cyan-400 transition">Projets</Link></li>
-          <li><Link href="#contact" className="hover:text-cyan-400 transition">Contact</Link></li>
-        </ul>
+      {/* Menu Desktop */}
+      <nav className="hidden md:flex gap-8 items-center">
+        <Link href="#home" className={`font-medium hover:scale-105 transition ${linkStyle}`}>{navData.home}</Link>
+        <Link href="#about" className={`font-medium hover:scale-105 transition ${linkStyle}`}>{navData.about}</Link>
+        <Link href="#projects" className={`font-medium hover:scale-105 transition ${linkStyle}`}>{navData.projects}</Link>
+        <Link href="#contact" className={`font-medium hover:scale-105 transition ${linkStyle}`}>{navData.contact}</Link>
       </nav>
 
-      {/* Burger button */}
+      {/* Bouton Burger Mobile */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`md:hidden text-3xl focus:outline-none ${menuClasses}`}
+        onClick={toggleMenu}
+        aria-label="Menu"
+        className={`md:hidden text-3xl transition hover:scale-125 ${linkStyle}`}
       >
-        {isOpen ? "✕" : "☰"}
+        {isOpen ? <FiX /> : <FiMenu />}
       </button>
 
-      {/* Mobile dropdown */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className={`absolute top-full left-0 w-full ${mobileMenuClasses} backdrop-blur-md border-t py-6 md:hidden`}
-          >
-            <ul className="flex flex-col items-center gap-6 text-lg">
-              <li><Link href="#about" onClick={() => setIsOpen(false)} className="hover:text-cyan-400">À propos</Link></li>
-              <li><Link href="#projects" onClick={() => setIsOpen(false)} className="hover:text-cyan-400">Projets</Link></li>
-              <li><Link href="#contact" onClick={() => setIsOpen(false)} className="hover:text-cyan-400">Contact</Link></li>
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+      {/* Menu Mobile déroulant */}
+      {isOpen && (
+        <div className={`absolute top-20 right-0 w-full py-10 flex flex-col items-center gap-6 shadow-lg transition ${mobileStyle}`}>
+          <Link href="#home" onClick={toggleMenu} className={`text-xl font-medium ${linkStyle}`}>{navData.home}</Link>
+          <Link href="#about" onClick={toggleMenu} className={`text-xl font-medium ${linkStyle}`}>{navData.about}</Link>
+          <Link href="#projects" onClick={toggleMenu} className={`text-xl font-medium ${linkStyle}`}>{navData.projects}</Link>
+          <Link href="#contact" onClick={toggleMenu} className={`text-xl font-medium ${linkStyle}`}>{navData.contact}</Link>
+        </div>
+      )}
     </>
   );
 }
