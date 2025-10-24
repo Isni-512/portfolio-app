@@ -1,14 +1,20 @@
-import { Inter } from 'next/font/google';
+import Body from '@/components/Body';
 import './globals.css';
-const inter = Inter({ subsets: ['latin'] });
+
 export const metadata = {
-    title: 'Portfolio-app',
-    description: 'Portfolio application',
-};
+    title: 'portfolio-app | Accueil',
+    description: 'Portfolio application, built with Next.js and Tailwind CSS to showcase projects and description about me.',
+    openGraph: {
+        title: 'portfolio-app | Accueil',
+        description: 'Portfolio application, built with Next.js and Tailwind CSS to showcase projects and description about me.',
+        images: ['/img/Icon-portfolio.webp']
+    },
+
+}
 export default function RootLayout({ children }) {
     return (
         <html lang='en'>
-        <body className={inter.className}>{children}</body>
+        <Body children={children} />
         </html>
     );
 }
