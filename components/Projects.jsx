@@ -22,7 +22,9 @@ export default function Projects() {
   const textStyle = theme === "light" ? "text-gray-600" : "text-gray-400";
 
   return (
-    <section className={`py-24 px-6 md:px-10 text-center transition-colors duration-300 ${sectionStyle}`}>
+    <section 
+      id="Project"
+      className={`py-24 px-6 md:px-10 text-center transition-colors duration-300 ${sectionStyle}`}>
       <h2 className="text-3xl font-bold text-cyan-400 mb-10">
         {language === "fr" ? "Mes Projets" : "My Projects"}
       </h2>
