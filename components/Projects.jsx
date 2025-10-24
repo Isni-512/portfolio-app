@@ -23,7 +23,7 @@ export default function Projects() {
 
   return (
     <section 
-      id="Projects"
+      id="projects"
       className={`py-24 px-6 md:px-10 text-center transition-colors duration-300 ${sectionStyle}`}>
       <h2 className="text-3xl font-bold text-cyan-400 mb-10">
         {language === "fr" ? "Mes Projets" : "My Projects"}
