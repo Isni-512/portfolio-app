@@ -7,7 +7,10 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full flex justify-between items-center px-6 md:px-10 py-6 backdrop-blur-md z-50">
+    <header
+      className="fixed top-0 w-full flex justify-between items-center px-6 md:px-10 py-6
+      bg-white/10 backdrop-blur-md border-b border-white/20 z-50 transition-all"
+    >
       {/* Logo */}
       <div className="text-2xl font-bold">
         ICN<span className="text-cyan-400">Dev</span>
@@ -38,9 +41,9 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-full left-0 w-full bg-black/90 backdrop-blur-md md:hidden"
+            className="absolute top-full left-0 w-full bg-white/10 backdrop-blur-md border-t border-white/20 md:hidden"
           >
-            <ul className="flex flex-col items-center gap-6 py-6 text-lg text-white">
+            <ul className="flex flex-col items-center gap-6 py-6 text-lg">
               <li>
                 <Link
                   href="#about"
