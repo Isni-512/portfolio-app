@@ -1,22 +1,10 @@
-"use client";
-import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function Navbar({ isOpen, setIsOpen }) {
   return (
-    <header
-      className="fixed top-0 w-full flex justify-between items-center px-6 md:px-10 py-6
-      bg-white/10 backdrop-blur-md border-b border-white/20 z-50 transition-all"
-    >
-      {/* Logo */}
-      <div className="text-2xl font-bold">
-        ICN<span className="text-cyan-400">Dev</span>
-      </div>
-
-      {/* Desktop menu */}
+    <>
+      {/* Menu desktop */}
       <nav className="hidden md:block">
         <ul className="flex gap-8 text-lg">
           <li><Link href="#about" className="hover:text-cyan-400 transition">À propos</Link></li>
@@ -25,7 +13,7 @@ export default function Navbar() {
         </ul>
       </nav>
 
-      {/* Hamburger button (mobile only) */}
+      {/* Bouton hamburger (mobile) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="md:hidden text-3xl focus:outline-none"
@@ -33,7 +21,7 @@ export default function Navbar() {
         {isOpen ? "✕" : "☰"}
       </button>
 
-      {/* Mobile menu */}
+      {/* Menu mobile animé */}
       <AnimatePresence>
         {isOpen && (
           <motion.nav
@@ -75,6 +63,6 @@ export default function Navbar() {
           </motion.nav>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
