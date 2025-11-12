@@ -7,7 +7,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    const filePath = `/locales/${language}/projects.json`;
+    const filePath = `/locales/${language}/Projects.json`;
 
     let isMounted = true;
     fetch(filePath)
